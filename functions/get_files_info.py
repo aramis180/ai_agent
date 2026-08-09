@@ -19,7 +19,7 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
         #result = f'Success: "{directory}" is within the working directory'
         #return result
         dir_contents = os.listdir(target_dir)
-        result = ''
+        files_info: list[str] = []
         for i in dir_contents:
             path = '/'.join([target_dir, i])
             name = i
@@ -27,12 +27,9 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
             is_dir = False
             if os.path.isdir(path):
                 is_dir = True
-            result = f'{result}- {name}: file_size={size} bytes, is_dir={is_dir}\n'
+            files_info.append(f'- {name}: file_size={size} bytes, is_dir={is_dir}')
 
-        return result
-
-
-
+        return '\n'.join(files_info)
 
 
     except Exception as e:
