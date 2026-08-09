@@ -1,4 +1,26 @@
 
+schema_write_file = {
+    "type": "function",
+    "function": {
+        "name": "write_file",
+        "description": "Make changes in a given file",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "File_path is a name of a file that are going to be changed, relative to the working directory (default is the working directory itself)",
+                },
+                "content": {
+                    "type": "string",
+                    "description": "Data that is going to overite given file, only this data is left after changes"
+                }
+            },
+        },
+    },
+}
+
+
 import os
 
 

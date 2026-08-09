@@ -1,4 +1,25 @@
 
+schema_run_python_files = {
+    "type": "function",
+    "function": {
+        "name": "run_python_files",
+        "description": "Run files with with .py suffix",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "File_path is a name of a file that are going to be run, relative to the working directory (default is the working directory itself)",
+                },
+                "args": {
+                    "type": "string",
+                    "description": "Arguments that will be provided to run files and functions"
+                }
+            },
+        },
+    },
+}
+
 import os
 import subprocess
 

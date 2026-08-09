@@ -1,4 +1,7 @@
 import argparse
+import json
+from functions.call_functions import available_functions
+from prompts import system_prompt
 
 
 def main():
@@ -24,15 +27,23 @@ def main():
     user_prompt = args.user_prompt
 
     messages = [
+        {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt}
     ]
 
     response = client.chat.completions.create(
         model = 'openrouter/free',
-        messages = messages
+        messages = messages,
+        tools = available_functions
     )
 
     model_response = response.choices[0].message.content
+
+    tool_calls_response = response.choices[0].message
+    for tool_call in tool_calls_response.tool_calls:
+        function_args = json.loads(tool_call.function.arguments or "{}")
+        print(f"Calling function: {tool_call.function.name}({function_args})")
+
 
     if response.usage is None:
         raise RuntimeError ("Failed API request")

@@ -1,4 +1,22 @@
 
+schema_get_files_content = {
+    "type": "function",
+    "function": {
+        "name": "get_files_content",
+        "description": "Provide content of a given file with a limitation of characters",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "File_path is a name of a file that are going to be read, relative to the working directory (default is the working directory itself)",
+                },
+            },
+        },
+    },
+}
+
+
 import os
 from config import max_chars
 
