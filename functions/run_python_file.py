@@ -1,8 +1,8 @@
 
-schema_run_python_files = {
+schema_run_python_file = {
     "type": "function",
     "function": {
-        "name": "run_python_files",
+        "name": "run_python_file",
         "description": "Run files with with .py suffix",
         "parameters": {
             "type": "object",
